@@ -2,19 +2,43 @@
 
 <?= $this->section('content') ?>
 
-<?php
-echo session()->getFlashdata('info');
-?>
+<div class="col">
+    <?php
+    if (!empty(session()->getFlashdata('info'))) {
+        echo '<div class="alert alert-danger" role="alert">';
 
-<h1>Insert Data</h1>
+        $eror = session()->getFlashdata('info');
+        foreach ($error as $key => $value) {
+            echo $key . "=>" . $value;
+            echo '</br>';
+        }
 
-<form action="<?= base_url() ?>/admin/kategori/insert" method="POST">
+        echo '</div>';
+    }
+    ?>
+</div>
 
-    kategori : <input type="text" name="kategori" required>
-    <br>
-    keterangan : <input type="text" name="keterangan" required>
-    <br>
-    <input type="submit" name="simpan" value="SIMPAN">
+<div class="col">
+    <h3>Insert Data</h3>
+</div>
+
+<div class="col-8
+">
+    <form action="<?= base_url('/admin/kategori/insert') ?>" method="POST">
+        <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <input type="text" name="kategori" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="keterangan">Keterangan</label>
+            <input type="text" name="keterangan" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="simpan" value="SIMPAN">
+        </div>
+</div>
 
 </form>
 
