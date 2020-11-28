@@ -6,13 +6,7 @@
     <?php
     if (!empty(session()->getFlashdata('info'))) {
         echo '<div class="alert alert-danger" role="alert">';
-
         $eror = session()->getFlashdata('info');
-        foreach ($error as $key => $value) {
-            echo $key . "=>" . $value;
-            echo '</br>';
-        }
-
         echo '</div>';
     }
     ?>
@@ -22,8 +16,7 @@
     <h3>Insert Data</h3>
 </div>
 
-<div class="col-8
-">
+<div class="col-8">
     <form action="<?= base_url('/admin/kategori/insert') ?>" method="POST">
         <div class="form-group">
             <label for="kategori">Kategori</label>

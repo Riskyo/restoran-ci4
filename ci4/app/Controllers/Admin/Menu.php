@@ -130,7 +130,6 @@ class Menu extends BaseController
             return redirect()->to(base_url("/admin/menu"));
         }
 
-
         // if ($model->insert($_POST) === false) {
         //     $error = $model->errors();
         //     session()->setFlashdata('info', $error['kategori']);

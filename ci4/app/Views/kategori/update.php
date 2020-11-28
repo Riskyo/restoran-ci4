@@ -22,8 +22,7 @@
     <h3>Update Data</h3>
 </div>
 
-<div class="col-8
-">
+<div class="col-8">
     <form action="<?= base_url() ?>/admin/kategori/update" method="POST">
         <div class="form-group">
             <label for="kategori">Kategori</label>
