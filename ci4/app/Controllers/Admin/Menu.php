@@ -67,6 +67,10 @@ class Menu extends BaseController
 
     public function update()
     {
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
+
         $id = $this->request->getPost('idmenu');
         $file = $this->request->getFile('gambar');
         $name = $file->getName();
@@ -77,16 +81,18 @@ class Menu extends BaseController
             $file->move('./upload');
         }
 
+
         $data = [
-            'idkategori'    => $this->request->getPost('idkategori'),
-            'menu'          => $this->request->getPost('menu'),
-            'gambar'        => $name,
-            'harga'         => $this->request->getPost('harga'),
+            'idkategori' => $this->request->getPost('idkategori'),
+            'menu' => $this->request->getPost('menu'),
+            'gambar' => $name,
+            'harga' => $this->request->getPost('harga')
         ];
 
-        $model = new Menu_M();
+        $model  = new Menu_M();
 
-        if ($model->insert($data) === false) {
+
+        if ($model->update($id, $data) === false) {
             $error = $model->errors();
             session()->setFlashdata('info', $error);
             return redirect()->to(base_url("/admin/menu/find/$id"));
@@ -94,6 +100,7 @@ class Menu extends BaseController
             return redirect()->to(base_url("/admin/menu"));
         }
     }
+
 
     public function option()
     {
@@ -142,15 +149,16 @@ class Menu extends BaseController
     public function find($id = null)
     {
         $model  = new Menu_M();
-        $menu   = $model->find($id);
+        $menu  = $model->find($id);
 
-        $kategorimodel  = new kategori_M();
-        $kategori       = $kategorimodel->findAll();
+        $kategorimodel = new Kategori_M();
+        $kategori  = $kategorimodel->findAll();
+
 
         $data = [
-            'judul'     => 'UPDATE DATA ',
-            'menu'      => $menu,
-            'kategori'  => $kategori
+            'judul' => 'UPDATE DATA',
+            'menu' => $menu,
+            'kategori' => $kategori
         ];
 
         return view("menu/update", $data);

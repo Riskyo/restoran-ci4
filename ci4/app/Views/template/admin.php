@@ -74,12 +74,12 @@
                             <li class="list-group-item"><a href="<?= base_url('/admin/user') ?>">User</a></li>
                         <?php endif; ?>
 
-                        <?php if ($level === "kasir") : ?>
+                        <?php if ($level === "Kasir") : ?>
                             <li class="list-group-item"><a href="<?= base_url('/admin/order') ?>">Order</a></li>
                             <li class="list-group-item"><a href="<?= base_url('/admin/orderdetail') ?>">Order Detail</a></li>
                         <?php endif; ?>
 
-                        <?php if ($level === "koki") : ?>
+                        <?php if ($level === "Koki") : ?>
                             <li class="list-group-item"><a href="<?= base_url('/admin/orderdetail') ?>">Order Detail</a></li>
                         <?php endif; ?>
 

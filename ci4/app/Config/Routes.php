@@ -32,8 +32,16 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('dashboard', 'Admin\Login::index');
+$routes->get('/login', 'Admin\Login::index');
+$routes->get('/loginp', 'Admin\Loginp::index');
 
 // $routes->get('joni/(:any)', 'admin\kategori::selectWhere/$1');
+
+$routes->add('/plg', 'Admin\ldpage::index');
+
+$routes->get('keranjang/tambah/(:any)', 'Admin\keranjang::tambah/$1');
+$routes->get('keranjang/kurang/(:any)', 'Admin\keranjang::kurang/$1');
+$routes->get('/keranjang/delete/(:any)', 'Admin\keranjang::delete/$1');
 
 $routes->group('admin', function ($routes) {
 
